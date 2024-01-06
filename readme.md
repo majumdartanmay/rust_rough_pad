@@ -2,10 +2,6 @@
 
 I want to write my journey while I learn rust.
 
-## Progress
-
-I understand some basics of variables
-
 ## Ownership
 
 https://doc.rust-lang.org/book/ch04-01-what-is-ownership.html
