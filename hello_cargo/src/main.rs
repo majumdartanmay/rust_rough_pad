@@ -62,12 +62,24 @@ fn main() {
         another_function_param(get_return_value2());
         while_loops();
         another_function_param(get_return_value3());
-
+        test_scoping();
         print!("You guessed: {guess}. Also apples - {apples}");
         print!("\nAlso, I created a secret number. {secret_number}");
-
+        scoping_test();
+        
+        print!("Using calculate_length");
+        let str_data: String = String::from("Hello World. This is Tanmay Majumdar");
+        let len_return : usize = calculate_length(&str_data);
+        println!("Size returned {len_return}");
+        
+        let mut int_d : u32= 10;
+        use_int_ref(&mut int_d);
+        use_int_ref(&mut int_d);
+        
+        println!("Now value of int_d {int_d}");
     }
 }
+
 
 fn another_function() {
     println!("This is another function!");
@@ -86,6 +98,26 @@ fn get_return_value() -> i32 {
 
 fn get_return_value2() -> i32 {
     5
+}
+
+fn scoping_test() {
+
+    let s = String::from("hello");  // s comes into scope
+
+    takes_ownership(s);             // s's value moves into the function...
+                                    // ... and so is no longer valid here
+
+    let x = 5;                      // x comes into scope
+
+    makes_copy(x);                  // x would move into the function,
+}
+
+fn takes_ownership(x: String) {
+    println!("Ownership taken {x}");
+}
+
+fn makes_copy(x: i32) {
+    println!("X is copied {x}");
 }
 
 fn get_return_value3() -> i32 {
@@ -139,4 +171,19 @@ fn looping_through_for() {
     for elem in a {
         println!("Elem => {elem}");
     }
+}
+
+fn test_scoping() {
+    let s = "test";
+    let  s1 = "test2";
+    let s2 = String::from("Hello World");
+    println!("Values {s} {s1} {s2}");
+}
+
+fn calculate_length(s: &String) -> usize {
+    s.len()
+}
+
+fn use_int_ref(int_d: &mut u32) {
+    println!("use_int_ref {int_d}");
 }
