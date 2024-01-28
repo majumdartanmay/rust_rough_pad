@@ -197,4 +197,13 @@ Also read about [Dangling references](https://doc.rust-lang.org/book/ch04-02-ref
 
 ## [Slice type](https://doc.rust-lang.org/book/ch04-02-references-and-borrowing.html#dangling-references)
 
- _To be continued_
+ We can get part of a string using syntax like this
+
+ ```
+let s = String::from("hello");
+
+let len = s.len();
+
+let slice = &s[3..len];
+let slice = &s[3..];
+ ```
