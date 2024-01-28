@@ -77,6 +77,9 @@ fn main() {
         use_int_ref(&mut int_d);
         
         println!("Now value of int_d {int_d}");
+        
+        let test_string = String::from("Hello World. This is a test string for slices");
+        slice_type_example(&test_string);
     }
 }
 
@@ -186,4 +189,9 @@ fn calculate_length(s: &String) -> usize {
 
 fn use_int_ref(int_d: &mut u32) {
     println!("use_int_ref {int_d}");
+}
+
+fn slice_type_example(str_test: &str) {
+    let first_part = &str_test[1..3];
+    println!("{}", first_part);
 }
