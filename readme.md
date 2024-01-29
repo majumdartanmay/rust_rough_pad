@@ -1,6 +1,6 @@
 # Introduction
 
-I want to write my journey while I learn rust.
+I want to write my journey while I learn rust. Its easy to revise the things I learnt about Rust from here.
 
 ## Ownership
 
@@ -207,3 +207,28 @@ let len = s.len();
 let slice = &s[3..len];
 let slice = &s[3..];
  ```
+
+[Struts](https://doc.rust-lang.org/book/ch05-00-structs.html)
+
+Defining
+
+```
+struct User {
+    active: bool,
+    username: String,
+    email: String,
+    sign_in_count: u64,
+}
+```
+To use a struct after we’ve defined it, we create an instance of that struct by specifying concrete values for each of the fields.
+
+```
+fn main() {
+    let user1 = User {
+        active: true,
+        username: String::from("someusername123"),
+        email: String::from("someone@example.com"),
+        sign_in_count: 1,
+    };
+}
+```
