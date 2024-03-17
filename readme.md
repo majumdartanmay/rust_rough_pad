@@ -208,7 +208,7 @@ let slice = &s[3..len];
 let slice = &s[3..];
  ```
 
-[Struts](https://doc.rust-lang.org/book/ch05-00-structs.html)
+[Structs](https://doc.rust-lang.org/book/ch05-00-structs.html)
 
 Defining
 
@@ -232,3 +232,63 @@ fn main() {
     };
 }
 ```
+
+## [Defining and Instantiating Structs](https://doc.rust-lang.org/book/ch05-01-defining-structs.html#defining-and-instantiating-structs)
+** Function which returns a struct **
+
+```rust
+fn build_user(email: String, username: String) -> User {
+    User {
+        active: true,
+        username: username,
+        email: email,
+        sign_in_count: 1,
+    }
+}
+
+```
+We can also use this shorthand
+
+```
+fn build_user(email: String, username: String) -> User {
+    User {
+        active: true,
+        username,
+        email,
+        sign_in_count: 1,
+    }
+}
+
+```
+
+### Creating instances from other isntances with Struct update syntax
+```rust
+let user2 = User {
+        email: String::from("another@example.com"),
+        ..user1
+    };
+```
+
+### Creating tuple structs without named fields
+
+```rust
+struct Color(i32, i32, i32);
+struct Point(i32, i32, i32);
+
+fn main() {
+    let black = Color(0, 0, 0);
+    let origin = Point(0, 0, 0);
+}
+```
+### Unit-like Structs without Any Fields
+``` rust
+struct AlwaysEqual;
+
+fn main() {
+    let subject = AlwaysEqual;
+}
+```
+
+# Ownership of Struct Data
+
+All the structs created until now owned their own data. To store data, which is owned by someone else, we need to use *lifetimes*. (We haven't read about it till now)
