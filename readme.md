@@ -289,6 +289,42 @@ fn main() {
 }
 ```
 
-# Ownership of Struct Data
+## Ownership of Struct Data
 
 All the structs created until now owned their own data. To store data, which is owned by someone else, we need to use *lifetimes*. (We haven't read about it till now)
+
+## A tuples example
+
+```rust
+fn main() {
+    let rect1 = (30, 50);
+
+    println!(
+        "The area of the rectangle is {} square pixels.",
+        area(rect1)
+    );
+}
+
+fn area(dimensions: (u32, u32)) -> u32 {
+    dimensions.0 * dimensions.1
+}
+```
+## The debug trait
+Rust does include functionality to print out debugging information, but we have to explicitly opt in to make that functionality available for our struct. To do that, we add the outer attribute #[derive(Debug)] just before the struct definition, as shown in Listing 5-12.
+
+```rust
+#[derive(Debug)]
+struct Rectangle {
+    width: u32,
+    height: u32,
+}
+
+fn main() {
+    let rect1 = Rectangle {
+        width: 30,
+        height: 50,
+    };
+
+    println!("rect1 is {:?}", rect1); // or use {:#?} for a more prettier printing
+}
+```
